@@ -1,0 +1,11 @@
+from textblob import TextBlob
+
+reviews = [
+    "The service was excellent and fast!",
+    "I am disappointed with the product quality.",
+    "The experience was okay, nothing special."
+]
+
+for r in reviews:
+    blob = TextBlob(r)
+    print(r, "→ Polarity:", round(blob.sentiment.polarity, 3))
