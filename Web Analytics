@@ -1,0 +1,19 @@
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Sample clickstream data
+data = {'user_id':[1,1,2,3,3],
+        'page':['home','product','home','home','checkout'],
+        'duration':[10,30,20,15,25]}
+df = pd.DataFrame(data)
+
+usage = df.groupby('page')['duration'].mean()
+print("Average Time on Pages:\n", usage)
+
+# Hyperlink graph
+G = nx.DiGraph()
+links = [('home','product'),('product','checkout'),('checkout','home')]
+G.add_edges_from(links)
+nx.draw(G, with_labels=True, node_color='lightblue', node_size=2500)
+plt.show()
