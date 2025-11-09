@@ -1,0 +1,24 @@
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+nltk.download(['punkt','stopwords','wordnet'])
+
+text = "Social Network Analysis focuses on studying interactions among users online."
+
+tokens = word_tokenize(text.lower())
+filtered = [w for w in tokens if w not in stopwords.words('english')]
+
+stemmer = PorterStemmer()
+stems = [stemmer.stem(w) for w in filtered]
+
+lemmatizer = WordNetLemmatizer()
+lemmas = [lemmatizer.lemmatize(w) for w in filtered]
+
+pos_tags = nltk.pos_tag(filtered)
+
+print("Tokens:", tokens)
+print("Filtered:", filtered)
+print("Stems:", stems)
+print("Lemmas:", lemmas)
+print("POS Tags:", pos_tags)
